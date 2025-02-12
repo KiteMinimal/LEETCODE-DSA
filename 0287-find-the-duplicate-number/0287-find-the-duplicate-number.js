@@ -3,18 +3,11 @@
  * @return {number}
  */
 var findDuplicate = function (nums) {
-    let i = 0
-    while (i < nums.length) {
-        let correct = nums[i] - 1
-        if (nums[i] != nums[correct]) {
-            let temp = nums[i]
-            nums[i] = nums[correct]
-            nums[correct] = nums[i]
+    let map = new Map()
+    for(let i = 0; i < nums.length; i++){
+        if(map.has(nums[i])){
+            return nums[i]
         }
-        else i++
-    }
-
-    for (let i = 0; i < nums.length - 1; i++) {
-        if (nums[i] == nums[i + 1]) return nums[i]
+        map.set(nums[i])
     }
 };
